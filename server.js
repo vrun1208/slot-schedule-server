@@ -5,11 +5,11 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-const corsOptions = {
-  origin: process.env.ALLOWED_CLIENTS.split(',')
-}
+// const corsOptions = {
+//   origin: process.env.ALLOWED_CLIENTS.split(','),
+// }
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 // Initialize physioAvailability with default values
