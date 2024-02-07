@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // const corsOptions = {
 //   origin: process.env.ALLOWED_CLIENTS.split(','),
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Initialize physioAvailability with default values
-let physioAvailability = Array(2).fill().map(() => Array(7).fill().map(() => Array(12).fill({state: 'vacant'})));
+let physioAvailability = Array(2).fill().map(() => Array(7).fill().map(() => Array(24).fill({state: 'vacant'})));
 
 app.get('/api/availability', (req, res) => {
   res.json(physioAvailability);
