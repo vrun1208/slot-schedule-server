@@ -14,9 +14,14 @@ app.use(bodyParser.json());
 
 // Initialize physioAvailability with default values
 let physioAvailability = Array(2).fill().map(() => Array(7).fill().map(() => Array(24).fill({state: 'vacant'})));
+let remarks = [];
 
 app.get('/api/availability', (req, res) => {
   res.json(physioAvailability);
+});
+
+app.get('/api/remarks', (req, res) => {
+  res.json(remarks);
 });
 
 app.post('/api/availability', (req, res) => {
@@ -24,6 +29,13 @@ app.post('/api/availability', (req, res) => {
   physioAvailability[physioId] = availability;
   res.json({ success: true });
 });
+
+app.post('/api/remarks', (req, res) => {
+  const { day, physioId, slotTime, remark } = req.body;
+  remarks.push({ day, physioId, slotTime, remark });
+  res.json({ success: true });
+})
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
