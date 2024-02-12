@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Initialize physioAvailability with default values
-let physioAvailability = Array(2).fill().map(() => Array(7).fill().map(() => Array(24).fill({state: 'vacant'})));
+let physioAvailability = Array(2).fill().map(() => Array(7).fill().map(() => Array(24).fill({state: 'vacant', time: ''})));
 let remarks = [];
 
 app.get('/api/availability', (req, res) => {
